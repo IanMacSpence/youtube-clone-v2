@@ -1,31 +1,23 @@
 // React and Router
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Components
 import Header from "./components/section/Header";
 import SideBar from "./components/section/SideBar";
 import RecommendedVideos from "./components/section/RecommendedVideos";
-import SearchPage from "./components/section/SearchPage";
 import TabBar from "./components/group/TabBar";
 
 import "./App.css";
 
 function App() {
-  // search input state to be passed to Header and SearchPage
-  const [searchInput, setSearchInput] = useState("");
-
   return (
     <div className="app">
       <Router>
-        <Header searchInput={searchInput} setSearchInput={setSearchInput} />
+        <Header />
         <main className="app__page">
           <SideBar />
           <Routes>
             <Route exact path="/" element={<RecommendedVideos />} />
-            <Route
-              path="/search/:searchTerm"
-              element={<SearchPage searchInput={searchInput} />}
-            />
           </Routes>
         </main>
       </Router>

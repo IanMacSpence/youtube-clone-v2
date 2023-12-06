@@ -1,6 +1,6 @@
 // React and Router
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 // CSS
 import "../../styles/section/Header.css";
 // MUI icons
@@ -15,21 +15,7 @@ import IconButton from "@mui/material/IconButton";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 
-function Header({ searchInput, setSearchInput }) {
-  let navigate = useNavigate();
-
-  const handleInputChange = (e) => {
-    setSearchInput(e.target.value);
-  };
-
-  const handleEnterPress = (event) => {
-    if (event.key === 'Enter' && searchInput.trim() !== '') {
-        
-        navigate(`/search/${searchInput}`);
-    }
-};
-
-  
+function Header() {
   return (
     <div className="header">
       <div className="header__left">
@@ -46,20 +32,12 @@ function Header({ searchInput, setSearchInput }) {
       </div>
       <div className="header__center">
         <div className="header__center__search-bar">
-          <input
-            onChange={handleInputChange}
-            onKeyDown={handleEnterPress}
-            value={searchInput}
-            placeholder="Search"
-            type="text"
-          />
-          <Link to={`/search/${searchInput}`}>
-            <div className="header__search-button-wrapper">
-              <Tooltip title="Search">
-                <SearchOutlinedIcon className="header__search-button" />
-              </Tooltip>
-            </div>
-          </Link>
+          <input placeholder="Search" type="text" />
+          <div className="header__search-button-wrapper">
+            <Tooltip title="Search">
+              <SearchOutlinedIcon className="header__search-button" />
+            </Tooltip>
+          </div>
         </div>
         <Tooltip title="Search with your voice">
           <IconButton>
@@ -94,6 +72,4 @@ function Header({ searchInput, setSearchInput }) {
 
 export default Header;
 
-// only route if searchterm.trim != ""
-// fix left border in search bar
 // fix blue box in search bar
