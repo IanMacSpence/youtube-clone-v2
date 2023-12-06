@@ -1,0 +1,48 @@
+.video-card {
+  margin-right: 15px;
+  margin-bottom: 25px;
+  width: 360px;
+}
+
+.video-card__body {
+  display: flex;
+}
+
+.video-card__title {
+  line-height: 1.4rem;
+}
+
+.video-card:hover {
+  cursor: pointer;
+}
+
+.video-card__thumbnail {
+  height: 200px;
+  width: 360px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  transition: border-radius 0.3s ease;
+}
+
+.video-card:hover > .video-card__thumbnail {
+  border-radius: 0;
+}
+
+.video-card__information__container {
+  padding-right: 30px;
+}
+
+.video-card__channel-img__container {
+  margin-right: 10px;
+}
+
+.video-card__channel-name {
+  line-height: 1.5rem;
+  font-size: 14px;
+  color: #606060;
+}
+
+.video-card__view-count-timestamp__container {
+  font-size: 14px;
+  color: #606060;
+}
