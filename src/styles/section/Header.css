@@ -37,8 +37,12 @@
 }
 
 .header__center__search-bar > input {
-  flex: 1;  
+  flex: 1;
   border: none;
+}
+
+.header__center__search-bar > input:focus-visible {
+  outline: none; /*remove blue focus outline*/
 }
 
 .header__search-button-wrapper {
