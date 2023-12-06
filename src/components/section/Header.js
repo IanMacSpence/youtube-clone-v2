@@ -71,5 +71,3 @@ function Header() {
 }
 
 export default Header;
-
-// fix blue box in search bar
