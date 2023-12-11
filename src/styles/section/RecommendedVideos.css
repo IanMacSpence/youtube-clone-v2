@@ -1,8 +1,8 @@
 .recommended-videos-container {
   display: flex;
-  flex: 0.85;
+  flex: 1;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 20px;
+  flex-grow: 1;
+  overflow-y: auto;
 }
-

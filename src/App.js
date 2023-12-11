@@ -1,35 +1,88 @@
 // React and Router
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 // Components
 import Header from "./components/section/Header";
 import SideBar from "./components/section/SideBar";
 import RecommendedVideos from "./components/section/RecommendedVideos";
 import TabBar from "./components/group/TabBar";
+import SubscriptionsPage from "./components/section/SubscriptionsPage";
+import TrendingPage from "./components/section/TrendingPage";
+import LibraryPage from "./components/section/LibraryPage";
+import HistoryPage from "./components/section/HistoryPage";
+import SearchResults from "./components/section/SearchResults";
+import RouterHandler from "./components/section/RouterHandler";
 
+// Custom Styles
 import "./App.css";
+// Video Data
+import videoData from "./data/recommendedVideoData.json";
 
 function App() {
+  // Handle state of sidebar
+  const [sidebarAlt, setSidebarAlt] = useState(false);
+  const toggleSidebar = () => {
+    setSidebarAlt(!sidebarAlt);
+  };
+  // Search state
+  const [searchTerm, setSearchTerm] = useState("");
+  const handleSearchBarChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  // Search result text displayed on search results page. Need separate to search
+  const [searchResultText, setSearchResultText] = useState("");
+
+  // Selected sidebar row
+  const [selectedSideBarRow, setSelectedSideBarRow] = useState("/");
+  const handleSelectedSideBarRow = (path) => {
+    setSelectedSideBarRow(path);
+  };
   return (
     <div className="app">
       <Router>
-        <Header />
+        <RouterHandler setSearchTerm={setSearchTerm} />
+        <Header
+          toggleSidebar={toggleSidebar}
+          handleSearchBarChange={handleSearchBarChange}
+          handleSelectedSideBarRow={handleSelectedSideBarRow}
+          searchTerm={searchTerm}
+          setSearchResultText={setSearchResultText}
+        />
         <main className="app__page">
-          <SideBar />
+          <SideBar
+            sidebarAlt={sidebarAlt}
+            selectedSideBarRow={selectedSideBarRow}
+            handleSelectedSideBarRow={handleSelectedSideBarRow}
+          />
           <Routes>
-            <Route exact path="/" element={<RecommendedVideos />} />
+            <Route
+              path="/"
+              element={
+                <div
+                  className={`main-content ${sidebarAlt ? "sidebarAlt" : ""}`}
+                >
+                  <TabBar />
+                  <RecommendedVideos
+                    videoData={videoData}
+                    sidebarAlt={sidebarAlt}
+                  />
+                  {/* pass video data as a prop to RecommendedVideos component */}
+                </div>
+              }
+            />
+            <Route path="/subscriptions" element={<SubscriptionsPage />} />
+            <Route path="/trending" element={<TrendingPage />} />
+            <Route path="/library" element={<LibraryPage />} />
+            <Route path="/history" element={<HistoryPage />} />
+            <Route
+              path="/search"
+              element={<SearchResults searchResultText={searchResultText} />}
+            />
           </Routes>
         </main>
       </Router>
-
-      {/* SubjectBar */}
-
-      {/* subs */}
-      {/* explore */}
-      {/* more from youtube */}
-      {/* settings, report, help, send feedback */}
-      {/* copyright */}
-      {/* <RecommendedVideos /> */}
     </div>
   );
 }
@@ -37,18 +90,9 @@ function App() {
 export default App;
 
 /*
-> make other sections of sidebar
-> make subject bar
 > Make responsive and mobile friendly
-> hover over header icons
-> header hamburger must change the sidebar. Probably an entirely different component
-> show more dropdown
-> better loading of images, grey out, lazy load
-> Scroll to bottom of page calls more videos
 */
 
 /*
-> Trending could be like the originals page. It would be nice to make this to display a different way to display the videos with the horizontal scroll
 > make the show more dropdown drop and display some playlists
-> make the sidebar sticky and scrollable
 */

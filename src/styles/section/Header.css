@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 20px;
+  padding: 5px 10px;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -21,18 +21,18 @@
 
 .header__center {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   width: 40%;
 }
 
 .header__center__search-bar {
-  display: flex;
+  display: none;
   flex: 1;
   padding-left: 10px;
   align-items: center;
   border: 1px solid lightgrey;
   border-radius: 20px;
-  height: 2rem;
+  height: rem;
   margin-right: 8px;
 }
 
@@ -56,8 +56,17 @@
 }
 
 .header__search-button {
-  width: 50px !important;
+  cursor: pointer;
+}
+
+.header__search-button-icon {
   color: grey;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.header__center > .voice-search-icon {
+  display: none;
 }
 
 .header__right {
@@ -72,3 +81,61 @@
 .header__avatar {
   cursor: pointer;
 }
+
+@media screen and (min-width: 768px) {
+  .header__center__search-bar {
+    display: flex;
+  }
+  .header__center > .voice-search-icon {
+    display: flex;
+  }
+  .header__center > button {
+    /* height: 24px !important; */
+    /* width: 45.5px !important; */
+  }
+  .header__right
+    > .header__right__icon__wrapper
+    > .header__search-button-wrapper-mobile {
+    display: none;
+  }
+}
+
+/* Mobile search header */
+.mobile-search-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.mobile-search-header > .header__center__search-bar {
+  display: flex;
+  margin-left: 2rem;
+}
+
+/* Search button */
+.header__search-button-wrapper > .header__search-button {
+  border-radius: 0 20px 20px 0 !important; /* Matches the search bar's border-radius */
+  padding: 7px !important; /* Consistent with the rest of the search bar */
+  background-color: #fafafa !important; /* Matches the search bar's background color */
+}
+.header__search-button-wrapper > .header__search-button:hover,
+.header__search-button-wrapper > .header__search-button:focus-visible {
+  background-color: #eaebec !important;
+}
+
+.header__search-button-wrapper > .header__search-button:active {
+  background-color: #dfe1e2 !important;
+}
+
+.header__search-button-wrapper > .header__search-button .MuiTouchRipple-root {
+  display: none !important; /* Hides the ripple effect */
+}
+
+/* Search button on mobile */
+/*.mobile-search-header .header__search-button {
+  border-radius: 0 20px 20px 0 !important; /~ Matches the search bar's border-radius ~/
+  padding: 4px !important; /~ Consistent with the rest of the search bar ~/
+  background-color: #fafafa !important; /~ Matches the search bar's background color ~/
+}*/
+

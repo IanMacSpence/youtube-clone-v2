@@ -1,9 +1,36 @@
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
 .app__page {
   display: flex;
+  flex-direction: row;
+  height: calc(100vh - 50px);
+  overflow-y: hidden;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
 }
 
 hr {
-  /* color: #f2f2f2; */
   border: 0;
   border-top: 1px solid #e5e5e5;
+}
+
+@media screen and (min-width: 792px) and (max-width: 1313px) {
+  .main-content.sidebarAlt {
+    margin-left: 84px;
+  }
+}
+
+@media screen and (min-width: 1314px) {
+  .main-content.sidebarAlt {
+    /* margin-left: 4rem; */
+  }
 }

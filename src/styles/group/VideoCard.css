@@ -1,7 +1,8 @@
 .video-card {
-  margin-right: 15px;
-  margin-bottom: 25px;
-  width: 360px;
+  margin: 0 0.5rem 2.5rem;
+  width: calc(100% - 48px);
+  max-width: 500px;
+  min-width: 310px;
 }
 
 .video-card__body {
@@ -17,8 +18,7 @@
 }
 
 .video-card__thumbnail {
-  height: 200px;
-  width: 360px;
+  width: 100%;
   margin-bottom: 10px;
   border-radius: 10px;
   transition: border-radius 0.3s ease;
@@ -30,6 +30,7 @@
 
 .video-card__information__container {
   padding-right: 30px;
+  width: 100%;
 }
 
 .video-card__channel-img__container {
@@ -46,3 +47,95 @@
   font-size: 14px;
   color: #606060;
 }
+
+/* media queries for video card to reduce their maximum width when the screen gets larger */
+/* default one card before 684px, two cards after */
+/* no sidebar, offcanvas sidebar */
+@media screen and (min-width: 684px) {
+  .video-card {
+    max-width: 472px;
+    width: calc(50% - 32px);
+  }
+  .video-card.sidebarAlt {
+    max-width: 472px;
+    width: calc(50% - 32px);
+  }
+}
+
+/* 792px: condensed sidebar */
+
+/* three cards after*/
+@media screen and (min-width: 1082px) {
+  .video-card {
+    max-width: 420px;
+    width: calc(33.33% - 26.67px);
+  }
+  .video-card.sidebarAlt {
+    max-width: 390px;
+    width: calc(33.33% - 26.67px);
+  }
+}
+
+/* 1313px: expanded sidebar */
+
+/* media queries for standard sidebar expanded */
+
+@media screen and (min-width: 1576px) {
+  .video-card {
+    max-width: 390px;
+    width: calc(25% - 24px);
+  }
+}
+
+@media screen and (min-width: 1902px) {
+  .video-card {
+    max-width: 360px;
+    width: calc(20% - 22.4px);
+  }
+}
+
+@media screen and (min-width: 2228px) {
+  .video-card {
+    max-width: 360px;
+    width: calc(16.667% - 20px);
+  }
+}
+
+/* media queries for condensed sidebar */
+
+/* four cards after*/
+@media screen and (min-width: 1408px) {
+  .video-card.sidebarAlt {
+    max-width: 390px;
+    /* width: calc(33.33% - 26.67px); */
+    width: calc(25% - 24px);
+  }
+}
+
+/* five cards after*/
+@media screen and (min-width: 1734px) {
+  .video-card.sidebarAlt {
+    max-width: 375px;
+    width: calc(20% - 22.4px);
+  }
+}
+
+@media screen and (min-width: 2060px) {
+  .video-card.sidebarAlt {
+    max-width: 360px;
+    width: calc(16.667% - 20px);
+  }
+}
+
+/* Skeletons */
+/* Thumbnail */
+.thumbnail-skeleton {
+  width: 100%;
+  padding-top: 55.56%; /* Maintain aspect ratio */
+  position: relative; /* For absolute positioning of the Skeleton */
+  margin-bottom: 10px;
+}
+
+/* .thumbnail-skeleton {
+  width: 100%;
+} */
