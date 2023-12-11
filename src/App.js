@@ -38,6 +38,9 @@ function App() {
   const [selectedSideBarRow, setSelectedSideBarRow] = useState("/");
   const handleSelectedSideBarRow = (path) => {
     setSelectedSideBarRow(path);
+    if (sidebarAlt && window.innerWidth < 1314) {
+      setSidebarAlt(false);
+    }
   };
   return (
     <div className="app">
